@@ -2,8 +2,8 @@ package org.eagleinvsys.test.converters.convertibles.impl;
 
 import org.eagleinvsys.test.converters.convertibles.ConvertibleMessage;
 
-import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Message implements ConvertibleMessage {
 
@@ -13,8 +13,8 @@ public class Message implements ConvertibleMessage {
     this.message = message;
   }
 
-  public LinkedHashSet<String> keySet() {
-    return new LinkedHashSet<>(message.keySet());
+  public Set<String> keySet() {
+    return message.keySet();
   }
 
   @Override
