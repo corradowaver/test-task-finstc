@@ -1,4 +1,4 @@
-package org.eagleinvsys.test.converters;
+package org.eagleinvsys.test.converters.convertibles;
 
 public interface ConvertibleMessage {
 

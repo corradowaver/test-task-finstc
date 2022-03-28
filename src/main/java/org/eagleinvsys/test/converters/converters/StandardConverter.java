@@ -1,4 +1,4 @@
-package org.eagleinvsys.test.converters;
+package org.eagleinvsys.test.converters.converters;
 
 import java.io.OutputStream;
 import java.util.List;

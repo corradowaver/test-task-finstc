@@ -1,7 +1,7 @@
-package org.eagleinvsys.test.converters.impl;
+package org.eagleinvsys.test.converters.converters.impl;
 
-import org.eagleinvsys.test.converters.Converter;
-import org.eagleinvsys.test.converters.ConvertibleCollection;
+import org.eagleinvsys.test.converters.converters.Converter;
+import org.eagleinvsys.test.converters.convertibles.ConvertibleCollection;
 
 import java.io.OutputStream;
 
