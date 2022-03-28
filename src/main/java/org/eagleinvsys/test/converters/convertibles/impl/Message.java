@@ -2,6 +2,7 @@ package org.eagleinvsys.test.converters.convertibles.impl;
 
 import org.eagleinvsys.test.converters.convertibles.ConvertibleMessage;
 
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 public class Message implements ConvertibleMessage {
@@ -12,9 +13,13 @@ public class Message implements ConvertibleMessage {
     this.message = message;
   }
 
+  public LinkedHashSet<String> keySet() {
+    return new LinkedHashSet<>(message.keySet());
+  }
+
   @Override
   public String getElement(String elementId) {
-    return this.message.get(elementId);
+    return this.message.getOrDefault(elementId, "");
   }
 
 }
