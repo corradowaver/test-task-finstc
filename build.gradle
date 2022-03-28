@@ -2,6 +2,16 @@ plugins {
     id 'java'
 }
 
+compileJava {
+    sourceCompatibility = '15'
+    targetCompatibility = '15'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
 group 'org.eagleinvsys.test'
 version '1.0-SNAPSHOT'
 
