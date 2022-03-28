@@ -6,9 +6,7 @@ import org.eagleinvsys.test.converters.convertibles.ConvertibleMessage;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
-
-import static java.util.Comparator.comparing;
+import java.util.stream.Collectors;
 
 public class MessageCollection implements ConvertibleCollection {
 
@@ -22,11 +20,11 @@ public class MessageCollection implements ConvertibleCollection {
 
   private LinkedHashSet<String> collectHeaders(List<ConvertibleMessage> collection) {
     return collection.stream()
-        .map(convertibleMessage ->
-            ((Message) convertibleMessage).keySet()
+        .flatMap(convertibleMessage ->
+            ((Message) convertibleMessage).keySet().stream()
         )
-        .max(comparing(Set::size))
-        .get();
+        .sorted()
+        .collect(Collectors.toCollection(LinkedHashSet::new));
   }
 
   @Override
