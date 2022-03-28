@@ -36,9 +36,7 @@ class StandardCsvConverterTests {
   @Test
   void converterMustFailIfMapsContainsDifferentKeySets() {
     List<Map<String, String>> collection = List.of(incomplete1, incomplete2);
-    standardConverter.toConvertibleCollection(collection);
-    assertThrows(IllegalArgumentException.class, () -> {
-    });
+    assertThrows(IllegalArgumentException.class, () -> standardConverter.toConvertibleCollection(collection));
   }
 
 }
