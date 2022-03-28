@@ -26,13 +26,29 @@ public class StandardCsvConverter implements StandardConverter {
    */
   @Override
   public void convert(List<Map<String, String>> collectionToConvert, OutputStream outputStream) {
-    ConvertibleCollection collection =
-        new MessageCollection(
-            collectionToConvert.stream()
-                .map(Message::new)
-                .collect(Collectors.toList())
-        );
+    ConvertibleCollection collection = toConvertibleCollection(collectionToConvert);
     csvConverter.convert(collection, outputStream);
+  }
+
+  public ConvertibleCollection toConvertibleCollection(List<Map<String, String>> collection) {
+    if (collection.isEmpty()) {
+      throw new IllegalArgumentException("Collection to convert cannot be empty");
+    }
+    if (notSameSetOfKeys(collection)) {
+      throw new IllegalArgumentException("Maps key sets are different");
+    }
+    return new MessageCollection(
+        collection.stream()
+            .map(Message::new)
+            .collect(Collectors.toList())
+    );
+  }
+
+  private boolean notSameSetOfKeys(List<Map<String, String>> collection) {
+    return !collection.stream()
+        .allMatch(it ->
+            it.keySet().equals(collection.get(0).keySet())
+        );
   }
 
 }

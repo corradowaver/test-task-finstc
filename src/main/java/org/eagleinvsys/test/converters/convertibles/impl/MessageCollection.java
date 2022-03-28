@@ -6,6 +6,7 @@ import org.eagleinvsys.test.converters.convertibles.ConvertibleMessage;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class MessageCollection implements ConvertibleCollection {
@@ -37,4 +38,16 @@ public class MessageCollection implements ConvertibleCollection {
     return collection;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MessageCollection that = (MessageCollection) o;
+    return collection.equals(that.collection) && headers.equals(that.headers);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(collection, headers);
+  }
 }
